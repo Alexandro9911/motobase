@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
-let DB = openDatabase("postgres","1.0","Motobase", 2000000);
+
 class Registrationform extends Component{
     constructor(props) {
         super(props);
@@ -23,13 +23,28 @@ class Registrationform extends Component{
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    handleSubmit(){
-        if(!DB){
-            alert("DataBase not Aviable");
-        } else {
+   async handleSubmit(){
+            let user = {
+                userFio: this.state.fio,
+                userEmail: this.state.email,
+                userCountry: this.state.country,
+                usecCity: this.state.city,
+                userTeleph: this.state.telephone,
+                userPassw: this.state.passw
+            };
+       alert("вы зарегистрированы");
+       let resp = await window.fetch("http://localhost/motobase/addToDB.php", {
+           method: "POST",
+           headers: {
+               "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+           },
+           body: new URLSearchParams({
+               type: "user"
+           })
 
-        }
-    }
+       });
+       alert("вы зарегистрированы");
+     }
 
 
     handleEmailChange(event){
