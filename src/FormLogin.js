@@ -1,98 +1,100 @@
-import React, { Component } from 'react';
-import { FormErrors } from './FormLoginError';
-import {Link} from "react-router-dom";
+import React, {Component} from 'react';
 
 class FormLogin extends Component {
-    constructor (props) {
+    constructor(props) {
         super(props);
         this.state = {
             email: '',
-            password: '',
-            formErrors: {email: '', password: ''},
-            emailValid: false,
-            passwordValid: false,
-            formValid: false
-        }
+            passw: '',
 
+        };
+        this.handleEmailChange = this.handleEmailChange.bind(this);
+        this.handlePasswChange = this.handlePasswChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleUserInput = (e) => {
-        const name = e.target.name;
-        const value = e.target.value;
-        this.setState({[name]: value},
-            () => { this.validateField(name, value) });
-    }
+    async handleSubmit(e) {
+        e.preventDefault();
+        let user = {
+            userEmail: this.state.email,
+            userPassw: this.state.passw
+        };
+        let answ = '';
+        let resp = await fetch("http://localhost/motobase/findUserInDB.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+            },
+            body: new URLSearchParams({
+                email: user.userEmail,
+                passw: user.userPassw
+            })
+        })
+            .then(response => response.text())
+            .then(result => answ = result)
 
-    validateField(fieldName, value) {
-        let fieldValidationErrors = this.state.formErrors;
-        let emailValid = this.state.emailValid;
-        let passwordValid = this.state.passwordValid;
-
-        switch(fieldName) {
-            case 'email':
-                emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-                fieldValidationErrors.email = emailValid ? '' : ' is invalid';
-                break;
-            case 'password':
-                passwordValid = value.length >= 6;
-                fieldValidationErrors.password = passwordValid ? '': ' is too short';
-                break;
-            default:
-                break;
-        }
-        this.setState({formErrors: fieldValidationErrors,
-            emailValid: emailValid,
-            passwordValid: passwordValid
-        }, this.validateForm);
-    }
-
-    validateForm() {
-        this.setState({formValid: this.state.emailValid && this.state.passwordValid});
-    }
-
-    errorClass(error) {
-        return(error.length === 0 ? '' : 'has-error');
-    }
-
-    getButton(){
-        if(this.state.formValid){
-            return(
-                <Link to="/userpage" type="submit" className="btn btn-primary" disabled={!this.state.formValid}>
-                    Войти
-                </Link>
-            )
+        if (answ === 'allCorrect') {
+            window.sessionStorage.setItem("user", user.userEmail);
+            window.location.assign('/userpage');
         } else {
-            return (
-                <div className="btn btn-primary">
-                    Войти
-                </div>
-            )
+            if (answ === 'somethingWrong') {
+                alert('Неверный пароль');
+            } else {
+                if (answ === 'notExist') {
+                    alert('Похоже вы не зарегистрированы');
+                    window.location.assign('/registration');
+                } else {
+                    alert('Ошибка соединения с базой данных');
+                }
+            }
         }
+        //  window.location.assign('/userpage');
     }
 
-    render () {
+    handleEmailChange(event) {
+        this.setState({email: event.target.value});
+    }
+
+    handlePasswChange(event) {
+        this.setState({passw: event.target.value});
+    }
+
+    render() {
         return (
-            <form className="demoForm">
-                <div className="panel panel-default">
-                    <FormErrors formErrors={this.state.formErrors} />
+            <form onSubmit={this.handleSubmit}>
+                <div className="container">
+                    <div className='wrapper2'>
+                        <div className="form-group row">
+                            <label htmlFor="colFormLabel" className="col-sm-2 col-form-label">Логин</label>
+                            <div className="col-sm-10">
+                                <input
+                                    type="email" className="form-control" id="email" placeholder=" Email"
+                                    required={true}
+                                    value={this.state.email}
+                                    onChange={this.handleEmailChange}
+                                />
+                            </div>
+                        </div>
+                        <div className="form-group row">
+                            <label htmlFor="colFormLabel" className="col-sm-2 col-form-label">Пароль</label>
+                            <div className="col-sm-10">
+                                <input
+                                    type="password" className="form-control" id="passw" placeholder="Пароль"
+                                    required={true}
+                                    value={this.state.passw}
+                                    onChange={this.handlePasswChange}
+                                />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div className={`form-group ${this.errorClass(this.state.formErrors.email)}`}>
-                    <label htmlFor="email">Email address</label>
-                    <input type="email" required className="form-control" name="email"
-                           placeholder="Email"
-                           value={this.state.email}
-                           onChange={this.handleUserInput}  />
+                <div className="wrapper2">
+                    <button className="btn btn-light">
+                        Войти
+                    </button>
                 </div>
-                <div className={`form-group ${this.errorClass(this.state.formErrors.password)}`}>
-                    <label htmlFor="password">Password</label>
-                    <input type="password" className="form-control" name="password"
-                           placeholder="Password"
-                           value={this.state.password}
-                           onChange={this.handleUserInput}  />
-                </div>
-                {this.getButton()}
             </form>
-        )
+        );
     }
 }
 
