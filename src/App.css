@@ -1,7 +1,7 @@
 .navbarbyme{
   height: 70px;
   width: auto;
-  background: rgba(179, 58, 54, 0.84);
+  background: rgb(179, 58, 54);
 }
 .flex-container {
   padding: 15px;
@@ -24,7 +24,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgba(186, 50, 50, 0.25);
+  background-color: rgba(90, 90, 92, 0.24);
 }
 
 .myCard {
@@ -32,9 +32,9 @@
   height: 100%;
   padding: 10px;
   margin-top: 60px;
-  border: 1px solid orangered;
+  border: 1px solid #12359c;
   background: rgba(168, 183, 246, 0.49);
-  border-radius: 20px 20px 20px 20px;
+  border-radius: 10px 10px 10px 10px;
   text-align: center;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   margin-bottom: 20px;
@@ -88,15 +88,15 @@
 }
 
 .mainbar{
+  padding: 20px;
   width: auto;
   height: 1400px;
   border: 1px solid #0d2158;
-  border-radius: 3px 3px 3px 3px;
-  background-color: rgba(186, 50, 50, 0.25);
+  background-color: rgba(90, 90, 92, 0.24);
 }
 .user-info{
   width: auto;
-  background-color: rgba(186, 50, 50, 0.25);
+  background-color: rgba(90, 90, 92, 0.24);
   height: auto;
 }
 .wrapper4{
@@ -106,4 +106,11 @@
   padding-left: 15px;
   display: -webkit-flex;
   display: flex;
+}
+.wrapper5{
+  padding: 20px;
+  width: max-content;
+}
+.wrapper6{
+  padding-bottom: 10px;
 }

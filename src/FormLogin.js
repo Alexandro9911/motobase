@@ -48,7 +48,6 @@ class FormLogin extends Component {
                 }
             }
         }
-        //  window.location.assign('/userpage');
     }
 
     handleEmailChange(event) {

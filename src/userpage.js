@@ -14,7 +14,8 @@ import {
 import Saves from "./saves";
 import Store from "./store";
 import Mygarage from "./mygarage";
-
+import Settings from "./settings";
+import Login from "./loginpage";
 function Userpage() {
     let match = useRouteMatch();
     return (
@@ -23,7 +24,6 @@ function Userpage() {
                 <UserNavs/>
             </div>
             <div>
-                <UserInfo/>
                 <Switch>
                     <Route path={`${match.url}/saves`}>
                         <Saves/>
@@ -33,6 +33,12 @@ function Userpage() {
                     </Route>
                     <Route path={`${match.url}/store`}>
                         <Store/>
+                    </Route>
+                    <Route path={`${match.url}/settings`}>
+                        <Settings/>
+                    </Route>
+                    <Route path={`/loginpage`}>
+                        <Login/>
                     </Route>
                 </Switch>
             </div>

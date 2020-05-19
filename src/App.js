@@ -13,7 +13,7 @@ import Userpage from "./userpage";
 import Saves from "./saves";
 import Mygarage from "./mygarage";
 import Store from "./store";
-
+import Settings from "./settings";
 export default function App() {
     return (
         <Router>
@@ -31,6 +31,9 @@ export default function App() {
                     </Route>
                     <Route path='/userpage/store'>
                         <Store/>
+                    </Route>
+                    <Route path='/userpage/settings'>
+                        <Settings/>
                     </Route>
                     <Route path="/loginpage">
                         <Login/>
