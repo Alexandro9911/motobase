@@ -35,6 +35,40 @@ class FormLogin extends Component {
 
         if (answ === 'allCorrect') {
             window.sessionStorage.setItem("user", user.userEmail);
+            let dataArr;
+            let answer1 = '';
+            this.state.email = window.sessionStorage.getItem("user");
+            let resp = await fetch("http://localhost/motobase/findUserInfo.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+                },
+                body: new URLSearchParams({
+                    email: this.state.email,
+                })
+            })
+                .then(response => response.text())
+                .then(result => answer1 = result)
+            if (answer1 !== "Err") {
+                dataArr = answer1.split('#');
+                let fio = dataArr[0];
+                let email = dataArr[1];
+                let id = dataArr[2];
+                let teleph = dataArr[3];
+                //this.state.city = dataArr[4];
+                //this.state.country = dataArr[5];
+
+                window.sessionStorage.setItem('fio', fio);
+                window.sessionStorage.setItem('email', email);
+                window.sessionStorage.setItem('id', id);
+                window.sessionStorage.setItem('teleph', teleph);
+                // window.sessionStorage.setItem('city',this.state.city);
+                // window.sessionStorage.setItem('country',this.state.country);
+            } else {
+                alert("Error with connection to Database. Now you will be redirect to mainpage. Please try it again later");
+                window.location.assign('/mainpage');
+            }
+
             window.location.assign('/userpage');
         } else {
             if (answ === 'somethingWrong') {
@@ -67,7 +101,7 @@ class FormLogin extends Component {
                             <label htmlFor="colFormLabel" className="col-sm-2 col-form-label">Логин</label>
                             <div className="col-sm-10">
                                 <input
-                                    type="email" className="form-control" id="email" placeholder=" Email"
+                                    type="email" className="form-control" id="email" placeholder="Email"
                                     required={true}
                                     value={this.state.email}
                                     onChange={this.handleEmailChange}

@@ -35,33 +35,38 @@ class Registrationform extends Component {
             userTeleph: this.state.telephone,
             userPassw: this.state.passw
         };
-        let answ = '';
-        // вносим пользователя
-        let resp = await window.fetch("http://localhost/motobase/addToDB.php", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-            },
-            body: new URLSearchParams({
-                fio: user.userFio,
-                email: user.userEmail,
-                country: user.userCountry,
-                city: user.usecCity,
-                tel: user.userTeleph,
-                passw: user.userPassw
+        if(this.state.passw === this.state.reppasw) {
+            // добавить валидацию пароля
+            let answ = '';
+            // вносим пользователя
+            let resp = await window.fetch("http://localhost/motobase/addToDB.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+                },
+                body: new URLSearchParams({
+                    fio: user.userFio,
+                    email: user.userEmail,
+                    country: user.userCountry,
+                    city: user.usecCity,
+                    tel: user.userTeleph,
+                    passw: user.userPassw
+                })
             })
-        })
-            .then(response => response.text())
-            .then(result => answ = result);
-        if (answ === 'success') {
-            alert("вы зарегистрированы");
-            window.location.assign('/loginpage');
-        } else {
-            if (answ === "userExist") {
-                alert("Пользователь уже существует");
+                .then(response => response.text())
+                .then(result => answ = result);
+            if (answ === 'success') {
+                alert("вы зарегистрированы");
+                window.location.assign('/loginpage');
             } else {
-                alert("err: " + answ);
+                if (answ === "userExist") {
+                    alert("Пользователь уже существует");
+                } else {
+                    alert("err: " + answ);
+                }
             }
+        } else {
+            alert("Пароли не совпадают");
         }
     }
 
@@ -102,7 +107,7 @@ class Registrationform extends Component {
                             <label htmlFor="colFormLabel" className="col-sm-2 col-form-label">ФИО</label>
                             <div className="col-sm-10">
                                 <input
-                                    type="text" className="form-control" id="fio" placeholder="Фамилия имя отчество"
+                                    type="text" className="form-control" id="fio" placeholder="Фамилия Имя Отчество"
                                     required={true}
                                     value={this.state.fio}
                                     onChange={this.handleFioChange}
@@ -146,7 +151,7 @@ class Registrationform extends Component {
                             <label htmlFor="colFormLabel" className="col-sm-2 col-form-label">Логин</label>
                             <div className="col-sm-10">
                                 <input
-                                    type="email" className="form-control" id="email" placeholder="Логин или Email"
+                                    type="email" className="form-control" id="email" placeholder="Email"
                                     required={true}
                                     value={this.state.email}
                                     onChange={this.handleEmailChange}

@@ -7,21 +7,21 @@ class UserInfo extends Component {
         super(props);
         this.state = {
             email: '',
-            passw: '',
-
+            id:'',
+            fio:'',
+            teleph:'',
+           // city:'',
+           // country:''
         };
     }
 
-
-
     render() {
         if(window.sessionStorage.length === 0){
-            alert("А как же авторизация? ну ка быстро на авторизацию!");
             window.location.assign('/loginpage');
         } else {
-
+           // this.getInfoFromDB();
             return (
-                <h6>{window.sessionStorage.getItem('user')}</h6>
+                <div>{window.sessionStorage.getItem('fio')}</div>
             );
         }
     }
