@@ -2,6 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css'
+import AddInGarage from "./addingarage";
 
 let names = ['IRBIS TTR', "BSE PH 10", "KTM DUKE", "Honda CBR"];
 let typeArr = ['Питбайк', "Питбайк", "Супермото", "Спорт"];
@@ -32,18 +33,24 @@ export default function Mygarage() {
     );
     if (q > 0) {
         return (
-            <div className='container'>
-                <div className='wrapper5'>
-                    {items}
+            <div>
+                <AddInGarage/>
+                <div className='container'>
+                    <div className='wrapper5'>
+                        {items}
+                    </div>
                 </div>
             </div>
         );
     } else {
         return (
-            <div className='container'>
-                <div className='text-center'>
-                    <div className='alert-info'>
-                        Пока что у вас нет мотоциклов
+            <div>
+                <AddInGarage/>
+                <div className='container'>
+                    <div className='text-center'>
+                        <div className='alert-info'>
+                            Пока что у вас нет мотоциклов
+                        </div>
                     </div>
                 </div>
             </div>
