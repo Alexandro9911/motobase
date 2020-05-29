@@ -13,9 +13,18 @@ class Settings extends Component {
     }
 
     render() {
+        let fio = window.sessionStorage.getItem('fio');
+        let tel = window.sessionStorage.getItem('teleph');
+        let email = window.sessionStorage.getItem('email');
         return (
-            <div>
-                <h4>User Settings</h4>
+            <div className='container'>
+                <h5>Настройки учетной записи</h5>
+                <div className='dropdown-divider'/>
+                <div className='wrapper7'>
+                    <h6>Имя Фамилия Отчество {fio}</h6>
+                    <h6>Контактный телефон {tel}</h6>
+                    <h6>Электронная почта {email}</h6>
+                </div>
             </div>
         );
     }

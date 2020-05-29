@@ -62,8 +62,8 @@ class FormLogin extends Component {
                 window.sessionStorage.setItem('email', email);
                 window.sessionStorage.setItem('id', id);
                 window.sessionStorage.setItem('teleph', teleph);
-                // window.sessionStorage.setItem('city',this.state.city);
-                // window.sessionStorage.setItem('country',this.state.country);
+                //window.sessionStorage.setItem('city',this.state.city);
+                //window.sessionStorage.setItem('country',this.state.country);
             } else {
                 alert("Error with connection to Database. Now you will be redirect to mainpage. Please try it again later");
                 window.location.assign('/mainpage');

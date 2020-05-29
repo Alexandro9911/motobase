@@ -10,8 +10,8 @@ class UserInfo extends Component {
             id:'',
             fio:'',
             teleph:'',
-           // city:'',
-           // country:''
+            city:'',
+            country:''
         };
     }
 
@@ -19,7 +19,6 @@ class UserInfo extends Component {
         if(window.sessionStorage.length === 0){
             window.location.assign('/loginpage');
         } else {
-           // this.getInfoFromDB();
             return (
                 <div>{window.sessionStorage.getItem('fio')}</div>
             );

@@ -1,10 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter as Router, Link, useRouteMatch} from "react-router-dom";
-import {Switch} from "react-router-dom";
-import {Route} from 'react-router-dom'
 import './App.css'
-import UserInfo from "./userinfo";
 import Addmotoform from "./addmotoform";
 
 export default function AddInGarage() {

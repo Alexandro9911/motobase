@@ -117,3 +117,18 @@
 .wrapper7{
   padding: 20px;
 }
+.grid-container-settings{
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+
+.flex-container-btn {
+  display: -webkit-flex;
+  display: flex;
+}
+.flex-item-btn {
+  margin-left: 3px;
+  -webkit-order: 1;
+  order: 1;
+}

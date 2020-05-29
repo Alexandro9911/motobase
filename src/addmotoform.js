@@ -105,8 +105,7 @@ class Addmotoform extends Component {
                                     required={true}
                                     value={this.state.mark}
                                     onChange={this.handleMarkChange}>
-
-                                <option selected>Choose mark...</option>
+                                <option selected>Choose...</option>
                                 <option value="1">Kawasaki</option>
                                 <option value="2">Honda</option>
                                 <option value="3">Yamaha</option>
@@ -148,7 +147,7 @@ class Addmotoform extends Component {
                                     required={true}
                                     value={this.state.type}
                                     onChange={this.handleTypeChange}>
-                                <option selected>Choose type...</option>
+                                <option selected>Choose...</option>
                                 <option value="1">Sport</option>
                                 <option value="2">Cross</option>
                                 <option value="3">Enduro</option>
@@ -184,7 +183,7 @@ class Addmotoform extends Component {
                                     required={true}
                                     value={this.state.country}
                                     onChange={this.handleCountryChange}>
-                                <option selected>Choose country...</option>
+                                <option selected>Choose...</option>
                                 <option value="1">Россия</option>
                                 <option value="2">Украина</option>
                                 <option value="3">Япония</option>
