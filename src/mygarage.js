@@ -60,7 +60,6 @@ class  Mygarage extends Component {
                                                          let motoStr = window.sessionStorage.getItem('motocycles');
                                                          const motocycles = Object.values(JSON.parse(motoStr));
                                                          motocycles[i]['status'] = newStat;
-                                                         alert("new stat: " +motocycles[i]['status']);
                                                          motocycles.toString();
                                                          finalFSON = JSON.stringify(motocycles);
                                                          window.sessionStorage.setItem('motocycles',finalFSON);

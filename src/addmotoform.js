@@ -208,7 +208,7 @@ class Addmotoform extends Component {
                     </div>
                 </div>
                 <div className="col-auto">
-                    <button type="submit" className="btn btn-primary mb-2">Submit</button>
+                    <button type="submit" className="btn btn-primary mb-2">Добавить</button>
                 </div>
             </form>
         );

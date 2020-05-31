@@ -57,9 +57,11 @@ class Decfriptionofmoto extends Component {
                               onChange={this.handlerValueChange}
                     >
                     </textarea>
-                    <button className="btn btn-outline-secondary">
-                        Изменить название
-                    </button>
+                    <div className="small">
+                        <button className="btn btn-sm btn-outline-secondary">
+                            Изменить описание
+                        </button>
+                </div>
                 </div>
             </form>
         )

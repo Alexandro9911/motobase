@@ -21,9 +21,17 @@ class Settings extends Component {
                 <h5>Настройки учетной записи</h5>
                 <div className='dropdown-divider'/>
                 <div className='wrapper7'>
-                    <h6>Имя Фамилия Отчество {fio}</h6>
-                    <h6>Контактный телефон {tel}</h6>
-                    <h6>Электронная почта {email}</h6>
+                    <h6>Имя Фамилия Отчество: {fio}</h6>
+                    <h6>Контактный телефон: {tel}</h6>
+                    <h6>Электронная почта: {email}</h6>
+                    <div className='dropdown-divider'/>
+                    <h6>Смена пароля</h6>
+                    <form>
+
+                    </form>
+                </div>
+                <div className="btn btn-outline-danger">
+                    Удалить аккаунт
                 </div>
             </div>
         );
