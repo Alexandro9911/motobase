@@ -14,6 +14,7 @@ import Saves from "./saves";
 import Mygarage from "./mygarage";
 import Store from "./store";
 import Settings from "./settings";
+import NewOffer from "./newOffer";
 export default function App() {
     return (
         <Router>
@@ -25,6 +26,9 @@ export default function App() {
                     </Route>
                     <Route path='/userpage/saves'>
                         <Saves/>
+                    </Route>
+                    <Route path='/userpage/saves/newoffer'>
+                        <NewOffer/>
                     </Route>
                     <Route path='/userpage/mygarage'>
                         <Mygarage/>

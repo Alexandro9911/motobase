@@ -12,6 +12,7 @@ import Store from "./store";
 import Mygarage from "./mygarage";
 import Settings from "./settings";
 import Login from "./loginpage";
+import NewOffer from "./newOffer";
 function Userpage() {
     let match = useRouteMatch();
 

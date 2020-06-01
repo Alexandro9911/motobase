@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
+import MakeOfferButton from "./makeOfferButton";
+import {Route, Switch} from "react-router-dom";
+import NewOffer from "./newOffer";
 
 class Saves extends Component {
 
@@ -12,8 +15,8 @@ class Saves extends Component {
     }
 
     render() {
-        if(this.state.resultStr === null){
-            return(
+        if (this.state.resultStr === null) {
+            return (
                 <div className="wrapper7">
                     <div className="alert alert-danger">
                         Пока что тут пусто
@@ -24,7 +27,7 @@ class Saves extends Component {
             const motocycles = Object.values(JSON.parse(this.state.resultStr));
             let pageUser = window.sessionStorage.getItem('id');
             let q = motocycles.length;
-            if(q > 0) {
+            if (q > 0) {
                 const items = motocycles.map((mot, i) =>
                     <div className="container" key={i}>
                         <div className="wrapper6">
@@ -44,9 +47,37 @@ class Saves extends Component {
                                     <div>Описание: {mot['description']}</div>
                                     <div className='dropdown-divider'/>
                                     <div className="small">
-                                        <button className="btn btn-sm btn-outline-secondary">
-                                            <div className="small">Показать историю</div>
+                                        <button className="btn btn-sm btn-outline-secondary"
+                                                onClick={async function () {
+                                                    let answ = '';
+                                                    let resp = await window.fetch("http://localhost/motobase/deleteFromMyWishList.php", {
+                                                        method: "POST",
+                                                        headers: {
+                                                            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+                                                        },
+                                                        body: new URLSearchParams({
+                                                            user: pageUser,
+                                                            id: mot['motoid']
+                                                        })
+                                                    })
+                                                        .then(response => response.text())
+                                                        .then(result => answ = result);
+                                                    if (answ === 'success') {
+                                                        let finalFSON;
+                                                        let motoStr = window.sessionStorage.getItem('saves');
+                                                        const motocycles = Object.values(JSON.parse(motoStr));
+                                                        motocycles.splice(i, 1);
+                                                        motocycles.toString();
+                                                        finalFSON = JSON.stringify(motocycles);
+                                                        window.sessionStorage.setItem('saves', finalFSON);
+                                                        window.location.reload();
+                                                    } else {
+                                                        alert("error: " + answ);
+                                                    }
+                                                }}>
+                                            <div className="small">- убрать из избранного</div>
                                         </button>
+                                       <MakeOfferButton user={pageUser} motuser={mot['user']}/>
                                     </div>
                                 </div>
                             </div>
@@ -54,11 +85,20 @@ class Saves extends Component {
                     </div>
                 );
                 return (
-                    <div className="wrapper7">
-                        <h4>Список сохраненных обьявлений</h4>
-                        <div className="wrapper7">
-                            <div>{Object.values(items)}</div>
-                        </div>
+                    <div>
+                        <Switch>
+                            <Route path='/userpage/saves/newoffer'>
+                                <NewOffer/>
+                            </Route>
+                            <Route path='/userpage/saves'>
+                                <div className="wrapper7">
+                                    <h4>Список сохраненных обьявлений</h4>
+                                    <div className="wrapper7">
+                                        <div>{Object.values(items)}</div>
+                                    </div>
+                                </div>
+                            </Route>
+                        </Switch>
                     </div>
                 );
             } else {
@@ -74,4 +114,5 @@ class Saves extends Component {
         }
     }
 }
+
 export default Saves
