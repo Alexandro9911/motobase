@@ -25,14 +25,14 @@ function Navbar() {
                     <div className='flex-item'>
                         <Link to="/loginpage">
                         <button className='btn btn-light'>
-                            LogIn
+                            Вход
                         </button>
                         </Link>
                     </div>
                     <div className='flex-item'>
                         <Link to="/registration">
                         <button className='btn btn-light'>
-                            Registration
+                            Регистрация
                         </button>
                         </Link>
                     </div>

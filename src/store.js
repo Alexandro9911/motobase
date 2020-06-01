@@ -25,6 +25,7 @@ class Store extends Component {
     handleTypeChange(event) {
         this.setState({type: event.target.value});
     }
+
     handleModelChange(event) {
         this.setState({model: event.target.value});
     }
@@ -38,7 +39,7 @@ class Store extends Component {
     }
 
 
-    async handlerSubmit(e){
+    async handlerSubmit(e) {
         e.preventDefault();
         let answ = '';
         let resp = await fetch("http://localhost/motobase/findOffers.php", {
@@ -56,12 +57,12 @@ class Store extends Component {
             .then(response => response.json())
             .then(result => answ = result)
         this.state.motoStr = JSON.stringify(answ);
-        window.sessionStorage.setItem("storeRes",this.state.motoStr);
+        window.sessionStorage.setItem("storeRes", this.state.motoStr);
         window.location.reload();
     }
 
     render() {
-        return(
+        return (
             <div>
                 <div className="wrapper7">
                     <h5>Поиск мотоциклов</h5>

@@ -1,13 +1,9 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
-import UserInfo from "./userinfo";
 import UserNavs from "./usernavs";
 import {
-    BrowserRouter as Router,
-    Link,
     useRouteMatch,
-    useParams,
     Switch,
     Route } from "react-router-dom";
 

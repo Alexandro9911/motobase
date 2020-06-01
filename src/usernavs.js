@@ -1,14 +1,11 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter as Router, Link, useRouteMatch} from "react-router-dom";
-import {Switch} from "react-router-dom";
-import {Route} from 'react-router-dom'
+import { Link, useRouteMatch} from "react-router-dom";
 import './App.css'
 import UserInfo from "./userinfo";
 
 export default function UserNavs() {
     let match = useRouteMatch();
-    // background: rgba(179, 58, 54, 0.84)
     return (
         <div>
             <UserInfo/>

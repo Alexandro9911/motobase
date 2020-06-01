@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import AddToWishlistButton from "./addToWishlistButton";
 class Offers extends Component {
 
     constructor(props) {
@@ -19,6 +20,7 @@ class Offers extends Component {
             )
         } else {
             const motocycles = Object.values(JSON.parse(this.state.resultStr));
+            let pageUser = window.sessionStorage.getItem('id');
             let q = motocycles.length;
             if(q > 0) {
                 const items = motocycles.map((mot, i) =>
@@ -40,9 +42,7 @@ class Offers extends Component {
                                     <div>Описание: {mot['description']}</div>
                                     <div className='dropdown-divider'/>
                                     <div className="small">
-                                        <button className="btn btn-sm btn-outline-secondary">
-                                            <div className="small">+ в избранное</div>
-                                        </button>
+                                        <AddToWishlistButton user={pageUser} vin={mot['vin']}/>
                                         <button className="btn btn-sm btn-outline-secondary">
                                             <div className="small">Показать историю</div>
                                         </button>

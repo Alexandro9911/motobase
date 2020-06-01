@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css'
 import AddInGarage from "./addingarage";
-import Addmotoform from "./addmotoform";
 import Decfriptionofmoto from "./decfriptionofmoto";
 
 let q = 0;
@@ -42,6 +41,17 @@ class  Mygarage extends Component {
                                                          newStat = '0';
                                                      } else {
                                                          newStat = '1';
+                                                         let resp = await window.fetch("http://localhost/motobase/deleteFromStore.php", {
+                                                             method: "POST",
+                                                             headers: {
+                                                                 "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+                                                             },
+                                                             body: new URLSearchParams({
+                                                                 moto : mot['motoid']
+                                                             })
+                                                         })
+                                                             .then(response => response.text())
+                                                             .then(result => answ = result);
                                                      }
                                                      let resp = await window.fetch("http://localhost/motobase/updateStatus.php", {
                                                          method: "POST",
