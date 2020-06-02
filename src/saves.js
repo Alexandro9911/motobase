@@ -10,9 +10,13 @@ class Saves extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            resultStr: window.sessionStorage.getItem('saves')
+            resultStr: window.sessionStorage.getItem('saves'),
+            clickMotoId: '',
+            clickMotUser: '',
+
         }
     }
+
 
     render() {
         if (this.state.resultStr === null) {
@@ -28,6 +32,7 @@ class Saves extends Component {
             let pageUser = window.sessionStorage.getItem('id');
             let q = motocycles.length;
             if (q > 0) {
+                let offer;
                 const items = motocycles.map((mot, i) =>
                     <div className="container" key={i}>
                         <div className="wrapper6">
@@ -77,7 +82,7 @@ class Saves extends Component {
                                                 }}>
                                             <div className="small">- убрать из избранного</div>
                                         </button>
-                                       <MakeOfferButton user={pageUser} motuser={mot['user']}/>
+                                       <MakeOfferButton user={pageUser} motuser={mot['user']} motid={mot['motoid']}/>
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +93,8 @@ class Saves extends Component {
                     <div>
                         <Switch>
                             <Route path='/userpage/saves/newoffer'>
-                                <NewOffer/>
+                                <NewOffer myid={pageUser} motuser={window.sessionStorage.getItem('motuser')}
+                                          motoid={window.sessionStorage.getItem('motoid')}/>
                             </Route>
                             <Route path='/userpage/saves'>
                                 <div className="wrapper7">

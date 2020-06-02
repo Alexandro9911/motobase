@@ -7,20 +7,25 @@ class MakeOfferButton extends Component {
         super(props);
         this.state = {
             user: props.user,
-            userMot: props.motuser
+            motuser: props.motuser,
+            motoid: props.motid
         };
+        this.handlerOnClick = this.handlerOnClick.bind(this);
+    }
+
+    handlerOnClick(){
+        window.sessionStorage.setItem('motuser',this.state.motuser);
+        window.sessionStorage.setItem('motoid',this.state.motoid);
     }
 
     render() {
-        if (this.state.user !== this.state.userMot) {
+        if (this.state.user !== this.state.motuser) {
             return (
-                <div>
-                    <Link to={'/userpage/saves/newoffer'}>
-                        <button className="btn btn-sm btn-outline-secondary">
+                <Link to={'/userpage/saves/newoffer'}>
+                        <button className="btn btn-sm btn-outline-secondary" onClick={this.handlerOnClick}>
                             <div className="small">Совершить сделку</div>
                         </button>
-                    </Link>
-                </div>
+                </Link>
             )
         } else {
             return (
