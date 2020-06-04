@@ -7,6 +7,15 @@ class Offers extends Component {
         this.state = {
             resultStr: window.sessionStorage.getItem('storeRes')
         }
+        this.retVin = this.retVin.bind(this);
+    }
+
+    retVin(vin){
+        let arr = vin.split("");
+        let length = arr.length;
+        return(
+            arr[0]+arr[1]+'***'+arr[length-3]+arr[length-2]+arr[length-1]
+        )
     }
 
     render() {
@@ -30,7 +39,7 @@ class Offers extends Component {
                                 <div className="card-header">{mot['mark']} {mot['nameMoto']}</div>
                                 <div className="card-body">
                                     <h5 className="card-title">{mot['type']}</h5>
-                                    <div>vin: {mot['vin']}</div>
+                                    <div>vin: {this.retVin(mot['vin'])}</div>
                                     <div>страна: {mot['country']}</div>
                                     <div>Год выпуска: {mot['year']}</div>
                                     <div>Кубатура: {mot['cubature']}</div>

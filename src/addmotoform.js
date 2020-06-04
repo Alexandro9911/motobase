@@ -98,6 +98,8 @@ class Addmotoform extends Component {
     render() {
         return (
             <form onSubmit={this.handlerSubmit}>
+                <div className="alert small alert-info">Внимание! Это действие доступно в том случае, если мотоцикл новый
+                    или ранее не был у владельцев, которые авторизованы в Motobase</div>
                 <div className="form-row align-items-center">
                     <div className="col-auto">
                         <div className="input-group mb-2">

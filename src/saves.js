@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import MakeOfferButton from "./makeOfferButton";
 import {Route, Switch} from "react-router-dom";
-import NewOffer from "./newOffer";
+import MyOffers from "./myOffers";
 
 class Saves extends Component {
 
@@ -15,8 +15,16 @@ class Saves extends Component {
             clickMotUser: '',
 
         }
+        this.retVin = this.retVin.bind(this);
     }
 
+    retVin(vin){
+        let arr = vin.split("");
+        let length = arr.length;
+        return(
+           arr[0]+arr[1]+'***'+arr[length-3]+arr[length-2]+arr[length-1]
+        )
+    }
 
     render() {
         if (this.state.resultStr === null) {
@@ -40,7 +48,7 @@ class Saves extends Component {
                                 <div className="card-header">{mot['mark']} {mot['nameMoto']}</div>
                                 <div className="card-body">
                                     <h5 className="card-title">{mot['type']}</h5>
-                                    <div>vin: {mot['vin']}</div>
+                                    <div>vin: {this.retVin(mot['vin'])}</div>
                                     <div>страна: {mot['country']}</div>
                                     <div>Год выпуска: {mot['year']}</div>
                                     <div>Кубатура: {mot['cubature']}</div>
@@ -90,21 +98,11 @@ class Saves extends Component {
                     </div>
                 );
                 return (
-                    <div>
-                        <Switch>
-                            <Route path='/userpage/saves/newoffer'>
-                                <NewOffer myid={pageUser} motuser={window.sessionStorage.getItem('motuser')}
-                                          motoid={window.sessionStorage.getItem('motoid')}/>
-                            </Route>
-                            <Route path='/userpage/saves'>
-                                <div className="wrapper7">
-                                    <h4>Список сохраненных обьявлений</h4>
-                                    <div className="wrapper7">
-                                        <div>{Object.values(items)}</div>
-                                    </div>
-                                </div>
-                            </Route>
-                        </Switch>
+                    <div className="wrapper7">
+                        <h4>Список сохраненных обьявлений</h4>
+                        <div className="wrapper7">
+                            <div>{Object.values(items)}</div>
+                        </div>
                     </div>
                 );
             } else {

@@ -12,7 +12,7 @@ import Store from "./store";
 import Mygarage from "./mygarage";
 import Settings from "./settings";
 import Login from "./loginpage";
-import NewOffer from "./newOffer";
+import MyOffers from "./myOffers";
 function Userpage() {
     let match = useRouteMatch();
 
@@ -28,6 +28,9 @@ function Userpage() {
                     </Route>
                     <Route path={`${match.url}/mygarage`}>
                         <Mygarage/>
+                    </Route>
+                    <Route path={`${match.url}/myoffers`}>
+                        <MyOffers/>
                     </Route>
                     <Route path={`${match.url}/store`}>
                         <Store/>

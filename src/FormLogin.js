@@ -6,11 +6,12 @@ class FormLogin extends Component {
         this.state = {
             email: '',
             passw: '',
-
+            count: 0
         };
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handlePasswChange = this.handlePasswChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+
     }
 
     async handleSubmit(e) {
@@ -19,6 +20,7 @@ class FormLogin extends Component {
             userEmail: this.state.email,
             userPassw: this.state.passw
         };
+        window.sessionStorage.setItem("partialEmail",this.state.email);
         let answ = '';
         let resp = await fetch("http://localhost/motobase/findUserInDB.php", {
             method: "POST",
@@ -71,15 +73,19 @@ class FormLogin extends Component {
 
             window.location.assign('/userpage');
         } else {
-            if (answ === 'somethingWrong') {
-                alert('Неверный пароль');
-            } else {
-                if (answ === 'notExist') {
-                    alert('Похоже вы не зарегистрированы');
-                    window.location.assign('/registration');
+            if (answ === 'somethingWrong' || answ === 'notExist') {
+                let ind = this.state.count + 1
+                this.setState({count: ind});
+                if(this.state.count >= 3){
+                    alert('Похоже вы не зарегистрированы либо забыли пароль');
+                    if(this.state.count === 5){
+                        window.location.assign('/registration');
+                    }
                 } else {
-                    alert('Ошибка соединения с базой данных');
+                    alert('Неверный адрес электронной почты или пароль.');
                 }
+            } else {
+                    alert('Ошибка соединения с базой данных');
             }
         }
     }

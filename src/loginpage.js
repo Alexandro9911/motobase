@@ -22,7 +22,8 @@ function Loginpannel() {
                             <h4>Авторизируйтесь</h4>
                             <FormLogin/>
                             <h6>Еще не зарегистрированы?</h6>
-                            <Link to="/registration">Зарегистрироваться</Link>
+                            <Link to="/registration" className="btn-sm btn-outline-primary">Зарегистрироваться</Link>
+                            <Link to="/foggotpassw" className='btn-sm btn-outline-primary'>Восстановление пароля</Link>
                         </div>
                     </div>
                 </div>

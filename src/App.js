@@ -14,7 +14,9 @@ import Saves from "./saves";
 import Mygarage from "./mygarage";
 import Store from "./store";
 import Settings from "./settings";
-import NewOffer from "./newOffer";
+import MyOffers from "./myOffers";
+import FoggotPassw from "./foggotPasswPage";
+
 export default function App() {
     return (
         <Router>
@@ -27,8 +29,8 @@ export default function App() {
                     <Route path='/userpage/saves'>
                         <Saves/>
                     </Route>
-                    <Route path='/userpage/saves/newoffer'>
-                        <NewOffer/>
+                    <Route path='/userpage/myoffers'>
+                        <MyOffers/>
                     </Route>
                     <Route path='/userpage/mygarage'>
                         <Mygarage/>
@@ -41,6 +43,9 @@ export default function App() {
                     </Route>
                     <Route path="/loginpage">
                         <Login/>
+                    </Route>
+                    <Route path="/foggotpassw">
+                        <FoggotPassw/>
                     </Route>
                     <Route path="/registration">
                         <Registration/>
