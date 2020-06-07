@@ -35,6 +35,9 @@ class  Mygarage extends Component {
                                         <div className="small">
                                             <div className="btn btn-sm btn-outline-secondary"
                                                  onClick={async function () {
+                                                     if(mot['status'] === '2'){
+                                                         alert('Действие недоступно. завершите сделку');
+                                                     } else {
                                                      let answ = '';
                                                      let newStat;
                                                      if(mot['status'] === '1'){
@@ -60,7 +63,8 @@ class  Mygarage extends Component {
                                                          },
                                                          body: new URLSearchParams({
                                                              vin : mot['vin'] ,
-                                                             stat : newStat
+                                                             stat : newStat,
+                                                             motoid: mot['motoid']
                                                          })
                                                      })
                                                          .then(response => response.text())
@@ -77,7 +81,7 @@ class  Mygarage extends Component {
                                                      } else {
                                                          alert("Ошибка " + answ);
                                                      }
-                                                 }}>
+                                                 }}}>
                                                 <div className="small">Изменить статус</div>
                                             </div>
                                         </div>
@@ -119,17 +123,27 @@ class  Mygarage extends Component {
 export default Mygarage;
 
 function decodeStatus(value) {
-    if(value === '1'){
-        return (
-            <div className="alert-success">
-                Статус: В личном пользовании
-            </div>
+    switch (value) {
+        case '1': {
+            return (
+                <div className="alert-success">
+                    Статус: В личном пользовании
+                </div>
             );
-    } else {
-        return (
-            <div className="alert-primary">
-             Статус: На продаже
-            </div>
-        );
+        }
+        case '0':{
+            return (
+                <div className="alert-primary">
+                    Статус: На продаже
+                </div>
+            );
+        }
+        case '2':{
+            return (
+                <div className="alert-warning">
+                    Статус: В сделке
+                </div>
+            );
+        }
     }
 }
