@@ -17,7 +17,8 @@ class ChangeOfferStatus extends Component {
             entered_code: '',
             index: props.index,
             offerid: props.offerid,
-            motoid: props.motoid
+            motoid: props.motoid,
+            vin: props.vin
         };
 
         this.prove = this.prove.bind(this);
@@ -139,7 +140,8 @@ class ChangeOfferStatus extends Component {
             },
             body: new URLSearchParams({
                 offerid: this.state.offerid,
-                enteredcode: this.state.entered_code
+                enteredcode: this.state.entered_code,
+                vin: this.state.vin
             })
         })
             .then(response => response.text())
@@ -292,7 +294,7 @@ class ChangeOfferStatus extends Component {
                                     <div className="form-group mx-sm-3 mb-2">
                                         <label htmlFor="inputPassword2" className="sr-only">Код подтверждения</label>
                                         <input type="text" className="form-control" id="inputPassword2"
-                                               placeholder="3х значный код"
+                                               placeholder="код подтверждения"
                                                value={this.state.entered_code}
                                                onChange={this.enteredCodeHandler}
                                         />
@@ -319,10 +321,10 @@ class ChangeOfferStatus extends Component {
                     )
                 } else {
                     return (
-                        <div>
-                            <div className="alert alert-danger"> Статус сделки: Отклонено</div>
+                        <div className="alert alert-danger">
+                            <div>Статус сделки: Отклонено</div>
                             <div className="small">
-                                <div className="btn btn-sm btn-outline-danger" onClick={this.deleteOffer}>
+                                <div className="btn btn-sm btn-outline-danger"  onClick={this.deleteOffer}>
                                     Удалить
                                 </div>
                             </div>

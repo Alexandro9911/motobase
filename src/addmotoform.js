@@ -34,35 +34,33 @@ class Addmotoform extends Component {
             moto_cubature: this.state.cubature,
             moto_country: this.state.country
         };
-        if (this.state.passw === this.state.reppasw) {
-            let answ = '';
-            let resp = await window.fetch("http://localhost/motobase/addmoto.php", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-                },
-                body: new URLSearchParams({
-                    vin: moto.moto_vin,
-                    name: moto.moto_name,
-                    type: moto.moto_type,
-                    mark: moto.moto_mark,
-                    year: moto.moto_year,
-                    cubature: moto.moto_cubature,
-                    country: moto.moto_country,
-                    user: window.sessionStorage.getItem('id')
-                })
+        let answ = '';
+        let resp = await window.fetch("http://localhost/motobase/addmoto.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+            },
+            body: new URLSearchParams({
+                vin: moto.moto_vin,
+                name: moto.moto_name,
+                type: moto.moto_type,
+                mark: moto.moto_mark,
+                year: moto.moto_year,
+                cubature: moto.moto_cubature,
+                country: moto.moto_country,
+                user: window.sessionStorage.getItem('id')
             })
-                .then(response => response.text())
-                .then(result => answ = result);
-            if (answ === 'success') {
-                alert("Мотоцикл добавлен");
-                window.location.reload();
+        })
+            .then(response => response.text())
+            .then(result => answ = result);
+        if (answ === 'success') {
+            alert("Мотоцикл добавлен");
+            window.location.reload();
+        } else {
+            if (answ === 'exist') {
+                alert("Мотоцикл с таким vin уже существует");
             } else {
-                if(answ === 'exist'){
-                    alert("Мотоцикл с таким vin уже существует");
-                } else {
-                    alert("err: " + answ);
-                }
+                alert("err: " + answ);
             }
         }
     }
@@ -98,8 +96,10 @@ class Addmotoform extends Component {
     render() {
         return (
             <form onSubmit={this.handlerSubmit}>
-                <div className="alert small alert-info">Внимание! Это действие доступно в том случае, если мотоцикл новый
-                    или ранее не был у владельцев, которые авторизованы в Motobase</div>
+                <div className="alert small alert-info">Внимание! Это действие доступно в том случае, если мотоцикл
+                    новый
+                    или ранее не был у владельцев, которые авторизованы в Motobase
+                </div>
                 <div className="form-row align-items-center">
                     <div className="col-auto">
                         <div className="input-group mb-2">

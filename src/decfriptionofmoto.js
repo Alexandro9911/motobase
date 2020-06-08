@@ -7,7 +7,8 @@ class Decfriptionofmoto extends Component {
             comment: props.value,
             vin: props.vin,
             description: props.value,
-            index: props.index
+            index: props.index,
+            status: props.status
         };
         this.handlerSubmit = this.handlerSubmit.bind(this);
         this.handlerValueChange = this.handlerValueChange.bind(this);
@@ -20,29 +21,33 @@ class Decfriptionofmoto extends Component {
 
     async handlerSubmit(e) {
         e.preventDefault();
-        let answ = '';
-        let resp = await window.fetch("http://localhost/motobase/updateDescr.php", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-            },
-            body: new URLSearchParams({
-                vin: this.state.vin,
-                descr: this.state.description
-            })
-        })
-            .then(response => response.text())
-            .then(result => answ = result);
-        if (answ === 'success') {
-            let motoStr = window.sessionStorage.getItem('motocycles');
-            const motocycles = Object.values(JSON.parse(motoStr));
-            motocycles[this.state.index]['description'] = this.state.description
-            motocycles.toString();
-            let finalFSON = JSON.stringify(motocycles);
-            window.sessionStorage.setItem('motocycles', finalFSON);
-            window.location.reload();
+        if(this.state.status === '2'){
+            alert('Действие недоступно, завершите сделку');
         } else {
-            alert("Ошибка " + answ);
+            let answ = '';
+            let resp = await window.fetch("http://localhost/motobase/updateDescr.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+                },
+                body: new URLSearchParams({
+                    vin: this.state.vin,
+                    descr: this.state.description
+                })
+            })
+                .then(response => response.text())
+                .then(result => answ = result);
+            if (answ === 'success') {
+                let motoStr = window.sessionStorage.getItem('motocycles');
+                const motocycles = Object.values(JSON.parse(motoStr));
+                motocycles[this.state.index]['description'] = this.state.description
+                motocycles.toString();
+                let finalFSON = JSON.stringify(motocycles);
+                window.sessionStorage.setItem('motocycles', finalFSON);
+                window.location.reload();
+            } else {
+                alert("Ошибка " + answ);
+            }
         }
     }
 

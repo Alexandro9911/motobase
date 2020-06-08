@@ -89,7 +89,7 @@ class  Mygarage extends Component {
                                 </div>
                                 <div className='dropdown-divider'/>
                                 <div>Описание: </div>
-                                <Decfriptionofmoto value={mot['description']} vin={mot['vin']} index={i}/>
+                                <Decfriptionofmoto status={mot['status']} value={mot['description']} vin={mot['vin']} index={i}/>
                             </div>
                         </div>
                     </div>

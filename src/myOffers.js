@@ -70,6 +70,7 @@ class MyOffers extends Component {
                                         index={i}
                                         offerid={mot[4]}
                                         motoid={mot['motoid']}
+                                        vin={mot['vin']}
                                     />
                                 </div>
                             </div>

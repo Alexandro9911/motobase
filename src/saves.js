@@ -4,6 +4,7 @@ import './App.css'
 import MakeOfferButton from "./makeOfferButton";
 import {Route, Switch} from "react-router-dom";
 import MyOffers from "./myOffers";
+import ShowHistory from "./showHistory";
 
 class Saves extends Component {
 
@@ -91,6 +92,7 @@ class Saves extends Component {
                                             <div className="small">- убрать из избранного</div>
                                         </button>
                                        <MakeOfferButton user={pageUser} motuser={mot['user']} motid={mot['motoid']}/>
+                                        <ShowHistory moto={mot['motoid']}/>
                                     </div>
                                 </div>
                             </div>

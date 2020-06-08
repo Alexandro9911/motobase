@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import AddToWishlistButton from "./addToWishlistButton";
+import ShowHistory from "./showHistory";
 class Offers extends Component {
 
     constructor(props) {
@@ -52,9 +53,7 @@ class Offers extends Component {
                                     <div className='dropdown-divider'/>
                                     <div className="small">
                                         <AddToWishlistButton user={pageUser} vin={mot['vin']}/>
-                                        <button className="btn btn-sm btn-outline-secondary">
-                                            <div className="small">Показать историю</div>
-                                        </button>
+                                        <ShowHistory moto={mot['motoid']}/>
                                     </div>
                                 </div>
                             </div>
