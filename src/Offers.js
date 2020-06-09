@@ -22,9 +22,11 @@ class Offers extends Component {
     render() {
         if(this.state.resultStr === null){
             return(
-                <div className="wrapper7">
-                    <div className="alert alert-danger">
-                        Пока что тут пусто
+                <div className="jumbotron jumbotron-fluid">
+                    <div className="container">
+                        <p className="lead text-center">
+                            Введите запрос
+                        </p>
                     </div>
                 </div>
             )
@@ -67,7 +69,7 @@ class Offers extends Component {
                 return (
                     <div className="wrapper7">
                         <div className="alert alert-danger">
-                            Результатов нет :(
+                            Результатов нет :( Либо сейчас таких мотоциклов в продаже нет, либо уточните запрос
                         </div>
                     </div>
                 );

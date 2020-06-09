@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import AddInGarage from "./addingarage";
 import Decfriptionofmoto from "./decfriptionofmoto";
+import ShowHistory from "./showHistory";
 
 let q = 0;
 class  Mygarage extends Component {
@@ -90,6 +91,7 @@ class  Mygarage extends Component {
                                 <div className='dropdown-divider'/>
                                 <div>Описание: </div>
                                 <Decfriptionofmoto status={mot['status']} value={mot['description']} vin={mot['vin']} index={i}/>
+                                <ShowHistory moto={mot['motoid']}/>
                             </div>
                         </div>
                     </div>
@@ -110,8 +112,12 @@ class  Mygarage extends Component {
                 <div>
                     <AddInGarage/>
                     <div className='container'>
-                        <div className="alert alert-info" role="alert">
-                            У вас нет мотоциклов
+                        <div className="jumbotron jumbotron-fluid">
+                            <div className="container">
+                                <p className="lead text-center">
+                                    Пока что тут ничего нет. Внесите свои мотоциклы в базу, либо приобретите в магазине
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

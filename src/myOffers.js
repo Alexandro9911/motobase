@@ -94,9 +94,11 @@ class MyOffers extends Component {
                 <div className='wrapper7'>
                     <h4>Мои сделки</h4>
                     <div className="dropdown-divider"/>
-                    <div className='container'>
-                        <div className="alert alert-info" role="alert">
-                            У вас нет сделок
+                    <div className="jumbotron jumbotron-fluid">
+                        <div className="container">
+                            <p className="lead text-center">
+                                Активных сделок нет. Выберите нужный вам мотоцикл в избранном и нажмите "готов на сделку"
+                            </p>
                         </div>
                     </div>
                 </div>

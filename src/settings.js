@@ -30,9 +30,6 @@ class Settings extends Component {
 
                     </form>
                 </div>
-                <div className="btn btn-outline-danger">
-                    Удалить аккаунт
-                </div>
             </div>
         );
     }

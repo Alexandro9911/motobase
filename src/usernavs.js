@@ -14,11 +14,8 @@ export default function UserNavs() {
             <ul><Link className="btn btn-sm btn-outline-secondary btn-block" to={`${match.url}/store`}>Поиск обьявлений</Link></ul>
             <ul><Link className="btn btn-sm btn-outline-secondary btn-block" onClick={handlSavesOnClick} to={`${match.url}/saves`}>Избранные объявления</Link></ul>
             <ul><Link className="btn btn-sm btn-outline-secondary btn-block" onClick={handlOffersOnClick} to={`${match.url}/myoffers`}>Мои сделки</Link></ul>
-            <ul><button className="btn btn-sm btn-outline-secondary btn-block">Проверить мотоцикл</button></ul>
             <ul><Link className="btn btn-sm btn-outline-secondary btn-block" to={`${match.url}/settings`}>Настройки профиля</Link></ul>
-            <ul><Link onClick={function () {
-                window.sessionStorage.clear()
-            }} className="btn btn-sm btn-outline-danger btn-block" to={`/loginpage`}>Выйти</Link></ul>
+            <ul><Link onClick={function () {window.sessionStorage.clear()}} className="btn btn-sm btn-outline-danger btn-block" to={`/loginpage`}>Выйти</Link></ul>
         </div>
     );
 }

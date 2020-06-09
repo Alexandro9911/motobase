@@ -117,23 +117,46 @@ class Registrationform extends Component {
                         <div className="form-group row">
                             <label htmlFor="colFormLabel" className="col-sm-2 col-form-label">Страна</label>
                             <div className="col-sm-10">
-                                <input
-                                    type="text" className="form-control" id="country" placeholder="укажите страну"
-                                    required={true}
-                                    value={this.state.country}
-                                    onChange={this.handleCountryChange}
-                                />
+                                <select className="custom-select" id="inlineFormCustomSelectPref"
+                                        required={true}
+                                        value={this.state.country}
+                                        onChange={this.handleCountryChange}>
+                                    <option selected>Choose...</option>
+                                    <option value="1">Россия</option>
+                                    <option value="2">Украина</option>
+                                    <option value="3">Япония</option>
+                                    <option value="4">Германия</option>
+                                    <option value="5">Австрия</option>
+                                    <option value="6">Китай</option>
+                                    <option value="7">США</option>
+                                    <option value="8">Индия</option>
+                                    <option value="9">Республика Беларусь</option>
+                                    <option value="10">Финляндия</option>
+                                    <option value="11">Корея</option>
+                                </select>
                             </div>
                         </div>
                         <div className="form-group row">
                             <label htmlFor="colFormLabel" className="col-sm-2 col-form-label">Город</label>
                             <div className="col-sm-10">
-                                <input
-                                    type="text" className="form-control" id="city" placeholder="укажите город"
-                                    required={true}
-                                    value={this.state.city}
-                                    onChange={this.handleCityChange}
-                                />
+                                <select className="custom-select" id="inlineFormCustomSelectPref"
+                                        required={true}
+                                        value={this.state.city}
+                                        onChange={this.handleCityChange}>
+                                    <option selected>Choose...</option>
+                                    <option value="1">Санкт-Петербург</option>
+                                    <option value="2">Москва</option>
+                                    <option value="3">Ростов</option>
+                                    <option value="4">Тосно</option>
+                                    <option value="5">Магадан</option>
+                                    <option value="6">Великий Новгород</option>
+                                    <option value="7">Berlin</option>
+                                    <option value="8">Muenchen</option>
+                                    <option value="9">Frankfurt am Main</option>
+                                    <option value="10">Киев</option>
+                                    <option value="11">New York</option>
+                                    <option value="12">Las Vegas</option>
+                                </select>
                             </div>
                         </div>
                         <div className="form-group row">

@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import MakeOfferButton from "./makeOfferButton";
-import {Route, Switch} from "react-router-dom";
-import MyOffers from "./myOffers";
 import ShowHistory from "./showHistory";
 
 class Saves extends Component {
@@ -111,8 +109,12 @@ class Saves extends Component {
                 return (
                     <div className="wrapper7">
                         <h5>Список сохраненных обьявлений</h5>
-                        <div className="alert alert-danger">
-                            Список пуст
+                        <div className="jumbotron jumbotron-fluid">
+                            <div className="container">
+                                <p className="lead text-center">
+                                    Ваш список пуст. Перейдите в магазин и добавьте с вписок мотоциклы которые хотите
+                                </p>
+                            </div>
                         </div>
                     </div>
                 );
