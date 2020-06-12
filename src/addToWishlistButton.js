@@ -6,7 +6,8 @@ class AddToWishlistButton extends Component {
         this.state = {
             buttonState: false,
             user: props.user,
-            vin: props.vin
+            vin: props.vin,
+            flag: 0
         };
         this.handlerOnClick = this.handlerOnClick.bind(this);
         this.getTextButton = this.getTextButton.bind(this);
@@ -51,7 +52,12 @@ class AddToWishlistButton extends Component {
                 if (answ === 'already there'){
                     alert("Уже добавлено");
                 } else {
-                    alert("Возникла ошибка: " + answ);
+                    if(answ === 'not aviable'){
+                        this.setState({flag: 1});
+                        alert("Мотоцикл снят с продажи, обновите список предложений, сделав повторный запрос");
+                    } else {
+                        alert("Возникла ошибка: " + answ);
+                    }
                 }
             }
         }
@@ -66,18 +72,26 @@ class AddToWishlistButton extends Component {
     }
 
     render() {
-        if (this.state.buttonState){
+        if(this.state.flag === 1){
             return (
-                <button className="btn btn-sm btn-outline-secondary" onClick={this.handlerOnClick}>
-                    <div className="small">- из избранное</div>
-                </button>
-            )
-        } else {
-            return (
-                <button className="btn btn-sm btn-outline-success" onClick={this.handlerOnClick}>
+                <button className="btn btn-sm btn-outline-success">
                     <div className="small">+ в избранное</div>
                 </button>
             )
+        } else {
+            if (this.state.buttonState){
+                return (
+                    <button className="btn btn-sm btn-outline-secondary" onClick={this.handlerOnClick}>
+                        <div className="small">- из избранное</div>
+                    </button>
+                )
+            } else {
+                return (
+                    <button className="btn btn-sm btn-outline-success" onClick={this.handlerOnClick}>
+                        <div className="small">+ в избранное</div>
+                    </button>
+                )
+            }
         }
     }
 }
