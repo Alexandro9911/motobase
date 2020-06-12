@@ -39,7 +39,6 @@ class Saves extends Component {
             let pageUser = window.sessionStorage.getItem('id');
             let q = motocycles.length;
             if (q > 0) {
-                let offer;
                 const items = motocycles.map((mot, i) =>
                     <div className="container" key={i}>
                         <div className="wrapper6">
@@ -59,6 +58,7 @@ class Saves extends Component {
                                     <div>Описание: {mot['description']}</div>
                                     <div className='dropdown-divider'/>
                                     <div className="small">
+                                        <ShowHistory moto={mot['motoid']}/>
                                         <button className="btn btn-sm btn-outline-secondary"
                                                 onClick={async function () {
                                                     let answ = '';
@@ -90,7 +90,6 @@ class Saves extends Component {
                                             <div className="small">- убрать из избранного</div>
                                         </button>
                                        <MakeOfferButton user={pageUser} motuser={mot['user']} motid={mot['motoid']}/>
-                                        <ShowHistory moto={mot['motoid']}/>
                                     </div>
                                 </div>
                             </div>

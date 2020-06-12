@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import AddToWishlistButton from "./addToWishlistButton";
 import ShowHistory from "./showHistory";
+import MakeOfferButton from "./makeOfferButton";
 class Offers extends Component {
 
     constructor(props) {
@@ -56,6 +57,7 @@ class Offers extends Component {
                                     <div className="small">
                                         <AddToWishlistButton user={pageUser} vin={mot['vin']}/>
                                         <ShowHistory moto={mot['motoid']}/>
+                                        <MakeOfferButton user={pageUser} motuser={mot['user']} motid={mot['motoid']}/>
                                     </div>
                                 </div>
                             </div>
