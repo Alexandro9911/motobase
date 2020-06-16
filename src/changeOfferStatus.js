@@ -150,7 +150,7 @@ class ChangeOfferStatus extends Component {
             if(answ === 'wrong code'){
                 alert("Неправильный код. Повторите попытку");
             } else {
-
+                alert("ошибка: "+ answ);
             }
         } else {
             alert("Куплено");

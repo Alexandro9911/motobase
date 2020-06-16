@@ -10,6 +10,7 @@ export default function UserNavs() {
     return (
         <div>
             <UserInfo/>
+            <div className="dropdown-divider"/>
             <ul><Link className="btn btn-sm btn-outline-secondary btn-block" onClick={handlGarageOnClick} to={`${match.url}/mygarage`}>Мой гараж</Link></ul>
             <ul><Link className="btn btn-sm btn-outline-secondary btn-block" to={`${match.url}/store`}>Поиск обьявлений</Link></ul>
             <ul><Link className="btn btn-sm btn-outline-secondary btn-block" onClick={handlSavesOnClick} to={`${match.url}/saves`}>Избранные объявления</Link></ul>
