@@ -171,7 +171,7 @@ class Registrationform extends Component {
                             </div>
                         </div>
                         <div className="form-group row">
-                            <label htmlFor="colFormLabel" className="col-sm-2 col-form-label">Логин</label>
+                            <label htmlFor="colFormLabel" className="col-sm-2 col-form-label">Эл. почта</label>
                             <div className="col-sm-10">
                                 <input
                                     type="email" className="form-control" id="email" placeholder="Email"

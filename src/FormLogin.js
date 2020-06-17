@@ -57,15 +57,11 @@ class FormLogin extends Component {
                 let email = dataArr[1];
                 let id = dataArr[2];
                 let teleph = dataArr[3];
-                //this.state.city = dataArr[4];
-                //this.state.country = dataArr[5];
 
                 window.sessionStorage.setItem('fio', fio);
                 window.sessionStorage.setItem('email', email);
                 window.sessionStorage.setItem('id', id);
                 window.sessionStorage.setItem('teleph', teleph);
-                //window.sessionStorage.setItem('city',this.state.city);
-                //window.sessionStorage.setItem('country',this.state.country);
             } else {
                 alert("Error with connection to Database. Now you will be redirect to mainpage. Please try it again later");
                 window.location.assign('/mainpage');
@@ -104,7 +100,7 @@ class FormLogin extends Component {
                 <div className="container">
                     <div className='wrapper2'>
                         <div className="form-group row">
-                            <label htmlFor="colFormLabel" className="col-sm-2 col-form-label">Логин</label>
+                            <label htmlFor="colFormLabel" className="col-sm-2 col-form-label">Эл. почта</label>
                             <div className="col-sm-10">
                                 <input
                                     type="email" className="form-control" id="email" placeholder="Email"
