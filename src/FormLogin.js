@@ -51,6 +51,7 @@ class FormLogin extends Component {
             })
                 .then(response => response.text())
                 .then(result => answer1 = result)
+
             if (answer1 !== "Err") {
                 dataArr = answer1.split('#');
                 let fio = dataArr[0];

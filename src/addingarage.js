@@ -4,6 +4,7 @@ import './App.css'
 import Addmotoform from "./addmotoform";
 
 export default function AddInGarage() {
+
     return (
         <div className='wrapper7'>
             <h3>Мой гараж</h3>
