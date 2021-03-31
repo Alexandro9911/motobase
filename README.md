@@ -1,4 +1,10 @@
 This is learning project for Database science
+## Где посмотреть:
+
+http://f0522162.xsph.ru/   - это бесплатный хостинг, по этому могут быть проблемы с переходами с других сайтов, по этому ссылку лучше на прямую в браузер вставлять. 
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:
